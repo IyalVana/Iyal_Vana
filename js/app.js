@@ -104,6 +104,11 @@
               ${p.mrp && p.mrp > p.price ? `<s>${money(p.mrp)}</s><span class="save">Save ${save}%</span>` : ''}
             </div>
             <ul class="kit__hl">${contents(p).map(h => `<li>${h}</li>`).join('')}</ul>
+            ${p.options && p.options.length ? `
+            <div class="kit__options">
+              <span class="kit__options-label">Choose one or more</span>
+              ${p.options.map((o, k) => `<label class="opt"><input type="checkbox" value="${o}" ${k === 0 ? 'checked' : ''}><span>${o}</span></label>`).join('')}
+            </div>` : ''}
             <div class="kit__actions">
               <div class="qty">
                 <button type="button" data-q="-1" aria-label="Decrease">−</button>
@@ -129,19 +134,30 @@
     });
 
     // Add-to-cart
+    const picked = sec => $$('.kit__options input:checked', sec).map(i => i.value);
     $$('.add-btn').forEach(b => b.addEventListener('click', e => {
       const sec = b.closest('.kit');
       const qty = +$('.qty__n', sec).textContent;
-      cart.add(b.dataset.add, qty);
+      const p = PRODUCTS.find(x => x.id === b.dataset.add);
+      if (p.options && p.options.length) {
+        const opts = picked(sec);
+        if (!opts.length) { toast('Please pick at least one option'); return; }
+        opts.forEach(o => cart.add(p.id, qty, o));
+      } else cart.add(p.id, qty);
       flyToCart($('.kit__img--paint', sec));
       ripple(e);
     }));
 
     // Order-now (single product straight to WhatsApp)
-    $$('.buy-btn').forEach(a => a.addEventListener('click', () => {
+    $$('.buy-btn').forEach(a => a.addEventListener('click', e => {
       const p = PRODUCTS.find(x => x.id === a.dataset.buy);
-      const qty = +$('.qty__n', a.closest('.kit')).textContent;
-      a.href = waLink(buildMessage([{ ...p, qty }]));
+      const sec = a.closest('.kit');
+      const qty = +$('.qty__n', sec).textContent;
+      if (p.options && p.options.length) {
+        const opts = picked(sec);
+        if (!opts.length) { e.preventDefault(); toast('Please pick at least one option'); return; }
+        a.href = waLink(buildMessage(opts.map(o => ({ ...p, qty, option: o }))));
+      } else a.href = waLink(buildMessage([{ ...p, qty }]));
     }));
   }
 
@@ -151,21 +167,22 @@
     items: [],
     load() { try { this.items = JSON.parse(localStorage.getItem(this.key)) || []; } catch { this.items = []; } },
     save() { try { localStorage.setItem(this.key, JSON.stringify(this.items)); } catch {} },
-    add(id, qty = 1) {
-      const it = this.items.find(i => i.id === id);
-      if (it) it.qty = Math.min(20, it.qty + qty); else this.items.push({ id, qty });
+    key(i) { return i.id + (i.option ? ':' + i.option : ''); },
+    add(id, qty = 1, option = '') {
+      const it = this.items.find(i => this.key(i) === id + (option ? ':' + option : ''));
+      if (it) it.qty = Math.min(20, it.qty + qty); else this.items.push({ id, qty, option });
       this.save(); this.render();
       const p = PRODUCTS.find(x => x.id === id);
-      toast(`${p.name} added to cart 🌸`);
+      toast(`${p.name}${option ? ' – ' + option : ''} added to cart 🌸`);
       const btn = $('#cartBtn'); btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump');
     },
-    set(id, qty) {
-      const it = this.items.find(i => i.id === id); if (!it) return;
-      it.qty = qty; if (it.qty <= 0) this.items = this.items.filter(i => i.id !== id);
+    set(key, qty) {
+      const it = this.items.find(i => this.key(i) === key); if (!it) return;
+      it.qty = qty; if (it.qty <= 0) this.items = this.items.filter(i => this.key(i) !== key);
       this.save(); this.render();
     },
     clear() { this.items = []; this.save(); this.render(); },
-    lines() { return this.items.map(i => ({ ...PRODUCTS.find(p => p.id === i.id), qty: i.qty })).filter(l => l.name); },
+    lines() { return this.items.map(i => ({ ...PRODUCTS.find(p => p.id === i.id), qty: i.qty, option: i.option || '', key: this.key(i) })).filter(l => l.name); },
     total() { return this.lines().reduce((s, l) => s + l.price * l.qty, 0); },
     count() { return this.items.reduce((s, i) => s + i.qty, 0); },
     render() {
@@ -173,13 +190,13 @@
       $('#cartItems').innerHTML = lines.map(l => `
         <div class="cart-item">
           <img src="${l.image}" alt="">
-          <div><b>${l.name}</b><small>${money(l.price)} × ${l.qty} = ${money(l.price * l.qty)}</small></div>
+          <div><b>${l.name}${l.option ? ` <em class="cart-item__opt">${l.option}</em>` : ''}</b><small>${money(l.price)} × ${l.qty} = ${money(l.price * l.qty)}</small></div>
           <div class="qty">
-            <button type="button" data-id="${l.id}" data-q="-1" aria-label="Decrease">−</button>
+            <button type="button" data-id="${l.key}" data-q="-1" aria-label="Decrease">−</button>
             <span>${l.qty}</span>
-            <button type="button" data-id="${l.id}" data-q="1" aria-label="Increase">+</button>
+            <button type="button" data-id="${l.key}" data-q="1" aria-label="Increase">+</button>
           </div>
-          <button class="cart-item__remove" data-rm="${l.id}">Remove</button>
+          <button class="cart-item__remove" data-rm="${l.key}">Remove</button>
         </div>`).join('');
       $('#cartTotal').textContent = money(this.total());
       const c = this.count();
@@ -195,7 +212,7 @@
     const note = ($('#custNote') && $('#custNote').value.trim()) || '';
     const total = lines.reduce((s, l) => s + l.price * l.qty, 0);
     let msg = `🌸 *New order – ${STORE.name}*\n\n`;
-    lines.forEach((l, i) => { msg += `${i + 1}. ${l.name}\n    ${money(l.price)} × ${l.qty} = ${money(l.price * l.qty)}\n`; });
+    lines.forEach((l, i) => { msg += `${i + 1}. ${l.name}${l.option ? ` (${l.option})` : ''}\n    ${money(l.price)} × ${l.qty} = ${money(l.price * l.qty)}\n`; });
     msg += `\n*Total: ${money(total)}*\n`;
     if (name) msg += `\n👤 Name: ${name}`;
     if (note) msg += `\n📍 Address / note: ${note}`;
@@ -214,7 +231,7 @@
     document.addEventListener('keydown', e => e.key === 'Escape' && close());
     $('#cartItems').addEventListener('click', e => {
       const q = e.target.closest('[data-q]'); const rm = e.target.closest('[data-rm]');
-      if (q) { const it = cart.items.find(i => i.id === q.dataset.id); cart.set(q.dataset.id, Math.min(20, it.qty + +q.dataset.q)); }
+      if (q) { const it = cart.items.find(i => cart.key(i) === q.dataset.id); cart.set(q.dataset.id, Math.min(20, it.qty + +q.dataset.q)); }
       if (rm) cart.set(rm.dataset.rm, 0);
     });
     $('#clearCart').addEventListener('click', () => { cart.clear(); toast('Cart cleared'); });

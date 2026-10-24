@@ -20,6 +20,8 @@
      price (optional – set it to 0 to hide it).
 
    figurines / colours / brushes are shown as the kit contents.
+   options: ["A", "B"]  lets the customer pick one or more
+   variants (price is charged per variant picked).
 
    Keep the commas between blocks and don't delete the quotes.
    ============================================================ */
@@ -87,7 +89,8 @@ window.IYAL_DATA = {
       price: 49, mrp: 0, badge: "Starter",
       figurines: 1, colours: 3, brushes: 1,
       image: "assets/products/single-set.png",
-      tip: "Tell us on WhatsApp which one you'd like: dino, butterfly or transport"
+      options: ["Dinosaur", "Butterfly", "Transport"],   // customer picks one or more; price is per figurine
+      tip: "Pick one, two or all three – each one comes with its own colours and brush"
     },
     {
       id: "space-kit",
