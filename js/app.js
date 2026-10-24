@@ -50,14 +50,6 @@
       </a>`).join('');
   }
 
-  /* ---------------- Products dropdown ---------------- */
-  function buildMenu() {
-    $('#productMenu').innerHTML = PRODUCTS.map(p => `
-      <a class="dropdown__item" href="#${p.id}">
-        <img src="${p.image}" alt="" loading="lazy">
-        <div><b>${p.name}</b><small>${money(p.price)}</small></div>
-      </a>`).join('');
-  }
 
   /* ---------------- Product sections ---------------- */
   function contents(p) {
@@ -269,12 +261,10 @@
 
   /* ---------------- Navigation ---------------- */
   function initNav() {
-    const nav = $('#nav'), links = $('#navLinks'), burger = $('#burger'), dd = $('.dropdown');
+    const nav = $('#nav'), links = $('#navLinks'), burger = $('#burger');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
     burger.addEventListener('click', () => { burger.classList.toggle('open'); links.classList.toggle('open'); });
-    $('.dropdown__btn').addEventListener('click', e => { e.preventDefault(); dd.classList.toggle('open'); });
-    document.addEventListener('click', e => { if (!dd.contains(e.target)) dd.classList.remove('open'); });
-    $$('a', links).forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); links.classList.remove('open'); dd.classList.remove('open'); }));
+    $$('a', links).forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); links.classList.remove('open'); }));
 
     // Scroll progress bar
     const bar = $('#progress');
@@ -421,7 +411,7 @@
   }
 
   /* ---------------- Boot ---------------- */
-  fillStore(); buildMenu(); buildKits(); initCart(); initNav(); petals();
+  fillStore(); buildKits(); initCart(); initNav(); petals();
   if (document.readyState === 'complete') initMotion();
   else window.addEventListener('DOMContentLoaded', initMotion);
   setTimeout(() => $('#loader').classList.add('done'), 2500); // never block the page

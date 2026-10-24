@@ -9,7 +9,7 @@
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -32,12 +32,7 @@
 
     <nav class="nav__links" id="navLinks">
       <a href="#home" class="nav__link">Home</a>
-      <div class="dropdown">
-        <button class="nav__link dropdown__btn" aria-haspopup="true" aria-expanded="false">
-          Products <span class="chev">&#9662;</span>
-        </button>
-        <div class="dropdown__menu" id="productMenu"></div>
-      </div>
+      <a href="#products" class="nav__link">Products</a>
       <a href="#about" class="nav__link">About</a>
       <a href="#contact" class="nav__link">Contact</a>
       <a href="#" class="nav__link nav__link--wa" id="navWa" target="_blank" rel="noopener">WhatsApp</a>
@@ -123,7 +118,6 @@
         <div class="about__side">
           <div class="about__card about__card--photo"><img src="assets/products/group-2.jpg" alt="Hand-painted Iyal Vana figurines" id="aboutImg"></div>
           <div class="about__card about__card--stats">
-            <div class="stat"><span class="stat__num" data-count="500">0</span><span class="stat__label">Happy makers</span></div>
             <div class="stat"><span class="stat__num" id="statKits">0</span><span class="stat__label">Painting kits</span></div>
             <div class="stat"><span class="stat__num" data-count="100">0</span><span class="stat__label">% handmade</span></div>
           </div>

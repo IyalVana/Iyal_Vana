@@ -36,7 +36,7 @@ window.IYAL_DATA = {
     phone: "+91 95669 87977",          // shown on the website
     instagram: "https://www.instagram.com/iyal_vana",
     email: "",                         // optional, leave "" to hide
-    address: "Tamil Nadu, India",      // optional
+    address: "",                       // optional, leave "" to hide the "Find us" card
     currency: "₹",
     deliveryNote: "Delivery charges will be confirmed on WhatsApp",
     logo: "assets/img/logo.png",       // replace with your own logo file

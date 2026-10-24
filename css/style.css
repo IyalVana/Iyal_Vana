@@ -23,7 +23,6 @@
   --radius:28px;
   --font-head:"Playfair Display",Georgia,serif;
   --font-body:"Poppins",system-ui,sans-serif;
-  --font-brand:"Fredoka","Poppins",system-ui,sans-serif;
   --nav-h:72px;
 }
 
@@ -89,7 +88,7 @@ h2 em{font-style:italic;color:var(--pink-600)}
   transition:opacity .6s,visibility .6s;
 }
 .loader.done{opacity:0;visibility:hidden}
-.loader p{font-family:var(--font-brand);letter-spacing:.3em;color:var(--pink-600);font-size:1.2rem;font-weight:700}
+.loader p{font-family:var(--font-head);letter-spacing:.35em;color:var(--pink-600);font-size:1.1rem}
 .loader__petal{
   width:54px;height:54px;border-radius:50% 0 50% 0;
   background:linear-gradient(135deg,var(--pink-300),var(--pink-600));
@@ -119,7 +118,7 @@ h2 em{font-style:italic;color:var(--pink-600)}
 .nav__brand{display:flex;align-items:center;gap:.7rem}
 .nav__logo{width:42px;height:42px;border-radius:50%;transition:transform .5s}
 .nav__brand:hover .nav__logo{transform:rotate(20deg) scale(1.08)}
-.nav__title{font-family:var(--font-brand);font-size:1.55rem;letter-spacing:.12em;color:var(--pink-700);font-weight:700;background:linear-gradient(135deg,var(--pink-700),var(--pink-500));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.nav__title{font-family:var(--font-head);font-size:1.35rem;letter-spacing:.18em;color:var(--pink-700);font-weight:700}
 .nav__links{display:flex;align-items:center;gap:.4rem}
 .nav__link{
   padding:.55rem .95rem;border-radius:999px;font-weight:500;font-size:.92rem;color:var(--rose-ink);
@@ -373,7 +372,7 @@ h2 em{font-style:italic;color:var(--pink-600)}
 .about__card p{color:var(--muted);margin:.8rem 0 1.2rem}
 .about__motto{display:flex;flex-wrap:wrap;gap:.5rem .9rem;font-family:var(--font-head);font-size:1.35rem;font-weight:700;color:var(--rose-ink);margin-top:.4rem}
 .about__motto .accent{color:var(--pink-600);font-style:italic}
-.about__card--stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;align-content:center;text-align:center;padding:1.6rem 1rem;background:linear-gradient(160deg,var(--pink-400),var(--pink-600));color:#fff;border:0}
+.about__card--stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;align-content:center;text-align:center;padding:1.6rem 1rem;background:linear-gradient(160deg,var(--pink-400),var(--pink-600));color:#fff;border:0}
 .stat__num{display:block;font-family:var(--font-head);font-size:2.4rem;font-weight:700}
 .stat__label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.9}
 
@@ -392,7 +391,7 @@ h2 em{font-style:italic;color:var(--pink-600)}
 
 /* ---------- Footer ---------- */
 .footer{background:linear-gradient(160deg,var(--pink-700),var(--pink-600));color:#fff;padding:60px 20px;text-align:center}
-.footer__brand{display:flex;align-items:center;justify-content:center;gap:.7rem;font-family:var(--font-brand);letter-spacing:.12em;font-size:1.5rem;font-weight:700}
+.footer__brand{display:flex;align-items:center;justify-content:center;gap:.7rem;font-family:var(--font-head);letter-spacing:.2em;font-size:1.3rem}
 .footer__brand img{width:40px;height:40px;border-radius:50%;background:#fff}
 .footer p{opacity:.85;margin-top:.6rem}
 .footer__copy{font-size:.8rem;opacity:.7;margin-top:1.5rem}
@@ -493,7 +492,7 @@ h2 em{font-style:italic;color:var(--pink-600)}
   .dropdown__btn{width:100%;justify-content:space-between}
 }
 @media (max-width:480px){
-  .nav__title{font-size:1.15rem;letter-spacing:.08em}
+  .nav__title{font-size:1.05rem;letter-spacing:.12em}
   .steps__inner{grid-template-columns:1fr}
   .hero{padding-top:calc(var(--nav-h) + 20px)}
   .kit__badge{right:-4px}
