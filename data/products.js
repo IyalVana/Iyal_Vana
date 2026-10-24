@@ -1,0 +1,182 @@
+/* ============================================================
+   IYAL VANA – STORE DATA
+   ------------------------------------------------------------
+   This is the ONLY file you need to edit to change products,
+   prices, pictures, phone number, etc. The website reads this
+   file and updates itself automatically.
+
+   HOW TO ADD A PRODUCT
+     Copy one { ... } block inside "products", paste it below
+     the last one and change the values. Put the picture in
+     assets/products/  (PNG with transparent background looks
+     best – a normal photo also works) and write its file name
+     in "image".
+
+   HOW TO REMOVE A PRODUCT
+     Delete its { ... } block, or add   hidden: true   to it.
+
+   HOW TO CHANGE A PRICE
+     Change the number in "price". "mrp" is the strike-through
+     price (optional – set it to 0 to hide it).
+
+   figurines / colours / brushes are shown as the kit contents.
+   options: ["A", "B"]  lets the customer pick one or more
+   variants (price is charged per variant picked).
+
+   Keep the commas between blocks and don't delete the quotes.
+   ============================================================ */
+
+window.IYAL_DATA = {
+
+  store: {
+    name: "IYAL VANA",
+    tagline: "DIY painting kits – ready-to-paint figurines, colours and a brush in every box",
+    description: "Every Iyal Vana kit is carefully cast and hand-packed in small batches, bringing you a little world of creativity to make your own. Each kit comes with ready-to-paint white figurines, a beautiful set of colours, and a paintbrush — everything you need to turn simple figurines into something uniquely yours.",
+    whatsapp: "919566987977",          // country code + number, digits only
+    phone: "+91 95669 87977",          // shown on the website
+    instagram: "https://www.instagram.com/iyal_vana",
+    email: "",                         // optional, leave "" to hide
+    address: "",                       // optional, leave "" to hide the "Find us" card
+    currency: "₹",
+    deliveryNote: "Delivery charges will be confirmed on WhatsApp",
+    logo: "assets/img/logo.png",       // replace with your own logo file
+    heroImages: [                      // pictures floating on the home banner
+      "assets/img/hero/dinosaur.png",
+      "assets/img/hero/butterfly.png",
+      "assets/img/hero/rocket.png",
+      "assets/img/hero/teddy.png",
+      "assets/img/hero/bus.png"
+    ],
+    aboutImage: "assets/products/group-2.jpg"
+  },
+
+  products: [
+    {
+      id: "dinosaur-set",
+      name: "Dinosaur Set",
+      category: "Painting kit",
+      tagline: "Five roaring dinos waiting for their colours",
+      price: 249, mrp: 0, badge: "Best Seller",
+      figurines: 5, colours: 6, brushes: 1,
+      image: "assets/products/dinosaur-set.png",
+    },
+    {
+      id: "butterfly-set",
+      name: "Butterfly Set",
+      category: "Painting kit",
+      tagline: "Six butterflies, endless wing patterns",
+      price: 199, mrp: 0, badge: "",
+      figurines: 6, colours: 6, brushes: 1,
+      image: "assets/products/butterfly-set.png",
+    },
+    {
+      id: "transport-set",
+      name: "Transport Set",
+      category: "Painting kit",
+      tagline: "Bus, car, train and more – paint your fleet",
+      price: 249, mrp: 0, badge: "",
+      figurines: 6, colours: 6, brushes: 1,
+      image: "assets/products/transport-set.png",
+    },
+    {
+      id: "single-figurine",
+      name: "Single Dino / Butterfly / Transport",
+      category: "Mini kit",
+      tagline: "One figurine, three colours – the perfect first try",
+      price: 49, mrp: 0, badge: "Starter",
+      figurines: 1, colours: 3, brushes: 1,
+      image: "assets/products/single-set.png",
+      options: ["Dinosaur", "Butterfly", "Transport"],   // customer picks one or more; price is per figurine
+    },
+    {
+      id: "space-kit",
+      name: "Space Kit",
+      category: "Painting kit",
+      tagline: "Rocket, astronaut and planet – 3… 2… 1… paint!",
+      price: 99, mrp: 0, badge: "",
+      figurines: 3, colours: 3, brushes: 1,
+      image: "assets/products/space-kit.png",
+    },
+    {
+      id: "fruits-set",
+      name: "Fruits Set",
+      category: "Painting kit",
+      tagline: "Eight juicy fruits to colour",
+      price: 79, mrp: 0, badge: "",
+      figurines: 8, colours: 3, brushes: 1,
+      image: "assets/products/fruits-set.png",
+    },
+    {
+      id: "flowers-set",
+      name: "Flowers Set",
+      category: "Painting kit",
+      tagline: "A garden of six flowers in bloom",
+      price: 79, mrp: 0, badge: "",
+      figurines: 6, colours: 3, brushes: 1,
+      image: "assets/products/flowers-set.png",
+    },
+    {
+      id: "fish-set",
+      name: "Fish Set",
+      category: "Painting kit",
+      tagline: "Six little fish for a rainbow aquarium",
+      price: 79, mrp: 0, badge: "",
+      figurines: 6, colours: 3, brushes: 1,
+      image: "assets/products/fish-set.png",
+    },
+    {
+      id: "mini-highland-cow",
+      name: "Mini Highland Cow",
+      category: "Mini kit",
+      tagline: "Shaggy fringe, tiny horns, big charm",
+      price: 69, mrp: 0, badge: "",
+      figurines: 1, colours: 3, brushes: 1,
+      image: "assets/products/highland-cow.png",
+    },
+    {
+      id: "3d-transport-set",
+      name: "3D Transport Set",
+      category: "Painting kit",
+      tagline: "Four chunky vehicles that stand on your desk",
+      price: 299, mrp: 0, badge: "New",
+      figurines: 4, colours: 6, brushes: 1,
+      image: "assets/products/3d-transport-set.png",
+    },
+    {
+      id: "kpop-set",
+      name: "K-Pop Set",
+      category: "Painting kit",
+      tagline: "Three idols ready for their stage look",
+      price: 249, mrp: 0, badge: "Trending",
+      figurines: 3, colours: 6, brushes: 1,
+      image: "assets/products/kpop-set.png",
+    },
+    {
+      id: "frozen-princess-set",
+      name: "Frozen Princess Set",
+      category: "Painting kit",
+      tagline: "Five icy characters from a winter kingdom",
+      price: 249, mrp: 0, badge: "",
+      figurines: 5, colours: 6, brushes: 1,
+      image: "assets/products/frozen-set.png",
+    },
+    {
+      id: "puppy-planter",
+      name: "Puppy Planter / Pen Holder",
+      category: "Décor kit",
+      tagline: "A fluffy puppy that holds your pens or a tiny plant",
+      price: 329, mrp: 0, badge: "",
+      figurines: 1, colours: 6, brushes: 1,
+      image: "assets/products/puppy-planter.png",
+    },
+    {
+      id: "premium-set",
+      name: "Premium Set",
+      category: "Mega kit",
+      tagline: "32 figurines, 15 colours, 3 brushes – the whole studio",
+      price: 699, mrp: 0, badge: "Mega",
+      figurines: 32, colours: 15, brushes: 3,
+      image: "assets/products/premium-set.png",
+    }
+  ]
+};
