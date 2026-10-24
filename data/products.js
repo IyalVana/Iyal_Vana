@@ -31,7 +31,7 @@ window.IYAL_DATA = {
   store: {
     name: "IYAL VANA",
     tagline: "DIY painting kits – ready-to-paint figurines, colours and a brush in every box",
-    description: "Every Iyal Vana kit is cast and packed by hand in small batches. Inside you get ready-to-paint white figurines, a set of colours and a paintbrush – everything you need to create, paint and explore.",
+    description: "Every Iyal Vana kit is carefully cast and hand-packed in small batches, bringing you a little world of creativity to make your own. Each kit comes with ready-to-paint white figurines, a beautiful set of colours, and a paintbrush — everything you need to turn simple figurines into something uniquely yours.",
     whatsapp: "919566987977",          // country code + number, digits only
     phone: "+91 95669 87977",          // shown on the website
     instagram: "https://www.instagram.com/iyal_vana",
@@ -59,7 +59,6 @@ window.IYAL_DATA = {
       price: 249, mrp: 0, badge: "Best Seller",
       figurines: 5, colours: 6, brushes: 1,
       image: "assets/products/dinosaur-set.png",
-      tip: "Give every dino its own colour – red, green, blue, orange and purple"
     },
     {
       id: "butterfly-set",
@@ -69,7 +68,6 @@ window.IYAL_DATA = {
       price: 199, mrp: 0, badge: "",
       figurines: 6, colours: 6, brushes: 1,
       image: "assets/products/butterfly-set.png",
-      tip: "Dots, stripes and two-tone wings look amazing"
     },
     {
       id: "transport-set",
@@ -79,7 +77,6 @@ window.IYAL_DATA = {
       price: 249, mrp: 0, badge: "",
       figurines: 6, colours: 6, brushes: 1,
       image: "assets/products/transport-set.png",
-      tip: "Classic yellow bus, bright red car, deep blue train"
     },
     {
       id: "single-figurine",
@@ -90,7 +87,6 @@ window.IYAL_DATA = {
       figurines: 1, colours: 3, brushes: 1,
       image: "assets/products/single-set.png",
       options: ["Dinosaur", "Butterfly", "Transport"],   // customer picks one or more; price is per figurine
-      tip: "Pick one, two or all three – each one comes with its own colours and brush"
     },
     {
       id: "space-kit",
@@ -100,7 +96,6 @@ window.IYAL_DATA = {
       price: 99, mrp: 0, badge: "",
       figurines: 3, colours: 3, brushes: 1,
       image: "assets/products/space-kit.png",
-      tip: "White rocket with a red nose and a deep blue window"
     },
     {
       id: "fruits-set",
@@ -110,7 +105,6 @@ window.IYAL_DATA = {
       price: 79, mrp: 0, badge: "",
       figurines: 8, colours: 3, brushes: 1,
       image: "assets/products/fruits-set.png",
-      tip: "Mix colours to make orange, purple and pink"
     },
     {
       id: "flowers-set",
@@ -120,7 +114,6 @@ window.IYAL_DATA = {
       price: 79, mrp: 0, badge: "",
       figurines: 6, colours: 3, brushes: 1,
       image: "assets/products/flowers-set.png",
-      tip: "Great as fridge magnets once painted"
     },
     {
       id: "fish-set",
@@ -130,7 +123,6 @@ window.IYAL_DATA = {
       price: 79, mrp: 0, badge: "",
       figurines: 6, colours: 3, brushes: 1,
       image: "assets/products/fish-set.png",
-      tip: "Try rainbow stripes on the fins"
     },
     {
       id: "mini-highland-cow",
@@ -140,7 +132,6 @@ window.IYAL_DATA = {
       price: 69, mrp: 0, badge: "",
       figurines: 1, colours: 3, brushes: 1,
       image: "assets/products/highland-cow.png",
-      tip: "Caramel brown fringe with a pink nose"
     },
     {
       id: "3d-transport-set",
@@ -150,7 +141,6 @@ window.IYAL_DATA = {
       price: 299, mrp: 0, badge: "New",
       figurines: 4, colours: 6, brushes: 1,
       image: "assets/products/3d-transport-set.png",
-      tip: "Paint the windows light blue for a glassy look"
     },
     {
       id: "kpop-set",
@@ -160,7 +150,6 @@ window.IYAL_DATA = {
       price: 249, mrp: 0, badge: "Trending",
       figurines: 3, colours: 6, brushes: 1,
       image: "assets/products/kpop-set.png",
-      tip: "Pastel hair colours and sparkly outfits"
     },
     {
       id: "frozen-princess-set",
@@ -170,7 +159,6 @@ window.IYAL_DATA = {
       price: 249, mrp: 0, badge: "",
       figurines: 5, colours: 6, brushes: 1,
       image: "assets/products/frozen-set.png",
-      tip: "Ice blue gowns with white snowflake dots"
     },
     {
       id: "puppy-planter",
@@ -180,7 +168,6 @@ window.IYAL_DATA = {
       price: 329, mrp: 0, badge: "",
       figurines: 1, colours: 6, brushes: 1,
       image: "assets/products/puppy-planter.png",
-      tip: "Brown and white patches with a black nose"
     },
     {
       id: "premium-set",
@@ -190,7 +177,6 @@ window.IYAL_DATA = {
       price: 699, mrp: 0, badge: "Mega",
       figurines: 32, colours: 15, brushes: 3,
       image: "assets/products/premium-set.png",
-      tip: "Perfect for birthday parties and family paint nights"
     }
   ]
 };

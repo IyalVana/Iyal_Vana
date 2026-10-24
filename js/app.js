@@ -118,7 +118,6 @@
               <button class="btn btn--primary add-btn" data-add="${p.id}">Add to cart</button>
               <a class="btn btn--ghost buy-btn" data-buy="${p.id}" href="#" target="_blank" rel="noopener">Order now</a>
             </div>
-            ${p.tip ? `<p class="kit__tip">🎨 <b>Colour idea:</b> ${p.tip}</p>` : ''}
           </div>
         </div>
       </section>`;
