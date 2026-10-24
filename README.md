@@ -1,7 +1,7 @@
 # IYAL VANA – website
 
-A small, fast storefront for Iyal Vana's handcrafted DIY figurines.
-Customers browse the figurines with a 3D scroll experience, add them to a
+A small, fast storefront for Iyal Vana's DIY painting kits.
+Customers browse the kits with a 3D scroll experience, add them to a
 cart, and place the order through WhatsApp (no payment gateway needed).
 
 * **Pure HTML / CSS / JavaScript** – no build step, no server, works on any free static host.
@@ -15,16 +15,16 @@ Open **`data/products.js`** in any text editor (Notepad, VS Code, GitHub's web e
 
 ```js
 {
-  id: "butterfly",                        // unique, letters and dashes only
-  name: "Butterfly",                      // shown on the site
-  category: "Garden friends",
-  tagline: "Spread your wings in any colour you like",
-  price: 149,                             // selling price
-  mrp: 199,                               // strike-through price (0 = hide)
-  badge: "Best Seller",                   // small label ("" = none)
-  image: "assets/products/butterfly.png", // picture file
-  highlights: ["Hand-cast, smooth finish", "Approx. 9 cm wide"],
-  tip: "Try two-tone wings with dots and stripes"
+  id: "dinosaur-set",                         // unique, letters and dashes only
+  name: "Dinosaur Set",                       // shown on the site
+  category: "Painting kit",
+  tagline: "Five roaring dinos waiting for their colours",
+  price: 249,                                 // selling price
+  mrp: 0,                                     // strike-through price (0 = hide)
+  badge: "Best Seller",                       // small label ("" = none)
+  figurines: 5, colours: 6, brushes: 1,       // kit contents, shown on the page
+  image: "assets/products/dinosaur-set.png",  // picture file
+  tip: "Give every dino its own colour"
 },
 ```
 
@@ -38,7 +38,7 @@ Open **`data/products.js`** in any text editor (Notepad, VS Code, GitHub's web e
   Keep pictures roughly square and under ~500 KB.
 
 The top of the same file has the **store settings**: WhatsApp number, phone,
-Instagram link, tagline, logo file, hero / about pictures.
+Instagram link, tagline, logo file, the pictures floating on the home banner (`heroImages`) and the About photo.
 
 ```js
 whatsapp: "919566987977",   // country code + number, digits only
@@ -50,23 +50,23 @@ phone: "+91 95669 87977",   // what visitors see
 
 ## 2. Changing the logo
 
-Replace `assets/img/logo.svg` with your own logo (SVG or PNG), or change the
+Replace `assets/img/logo.png` with your own logo (PNG or SVG), or change the
 `logo:` line in `data/products.js` to point to your file. A square image works best.
 
 ## 3. How ordering works
 
-1. Customer taps **Add to cart** on any figurine (or **Order now** for a single item).
+1. Customer taps **Add to cart** on any kit (or **Order now** for a single item).
 2. The cart drawer shows the items, quantity and total, plus optional name / address fields.
 3. **Place order on WhatsApp** opens WhatsApp (app or web) with a ready-made message
    to the number in `data/products.js`, e.g.
 
    ```
    🌸 New order – IYAL VANA
-   1. Butterfly
-       ₹149 × 2 = ₹298
-   2. Dinosaur
-       ₹199 × 1 = ₹199
-   Total: ₹497
+   1. Dinosaur Set
+       ₹249 × 2 = ₹498
+   2. Space Kit
+       ₹99 × 1 = ₹99
+   Total: ₹597
    👤 Name: Priya
    📍 Address / note: Anna Nagar, Chennai 600040
    ```
@@ -99,7 +99,7 @@ css/style.css         all styling (colours live in :root at the top)
 js/app.js             cart, WhatsApp ordering, 3D scroll animations
 data/products.js      ← products, prices, store details (edit this)
 assets/products/      product pictures
-assets/img/           logo, brush / palette graphics, favicon
+assets/img/           logo, brush / palette graphics, favicon, hero/ (banner pictures)
 ```
 
 ## 7. Credits

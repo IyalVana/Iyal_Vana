@@ -29,11 +29,9 @@
     $('#statKits').dataset.count = PRODUCTS.length;
     $('#cartDelivery').textContent = STORE.deliveryNote || '';
     // hero scene: a few figurines floating in 3D
-    const ids = STORE.heroFigurines && STORE.heroFigurines.length ? STORE.heroFigurines : PRODUCTS.slice(0, 5).map(p => p.id);
-    $('#heroScene').innerHTML = ids.map((id, i) => {
-      const p = PRODUCTS.find(x => x.id === id); if (!p) return '';
-      return `<div class="hero__fig hero__fig--${i + 1}" data-depth="${[1, .5, .35, .8, .65][i] || .5}"><img src="${p.image}" alt="${p.name}"></div>`;
-    }).join('');
+    const heroImgs = STORE.heroImages && STORE.heroImages.length ? STORE.heroImages : PRODUCTS.slice(0, 5).map(p => p.image);
+    $('#heroScene').innerHTML = heroImgs.slice(0, 5).map((src, i) =>
+      `<div class="hero__fig hero__fig--${i + 1}" data-depth="${[1, .5, .35, .8, .65][i] || .5}"><img src="${src}" alt=""></div>`).join('');
     if (STORE.aboutImage && $('#aboutImg')) $('#aboutImg').src = STORE.aboutImage;
 
     const hi = waLink(`Hi ${STORE.name}! I'd like to know more about your DIY kits 🌸`);
@@ -62,6 +60,15 @@
   }
 
   /* ---------------- Product sections ---------------- */
+  function contents(p) {
+    const out = [];
+    const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+    if (p.figurines) out.push(`🧸 ${plural(p.figurines, 'ready-to-paint figurine', 'ready-to-paint figurines')}`);
+    if (p.colours) out.push(`🎨 ${plural(p.colours, 'colour', 'colours')} included`);
+    if (p.brushes) out.push(`🖌️ ${plural(p.brushes, 'paintbrush', 'paintbrushes')}`);
+    return out.concat(p.highlights || []);
+  }
+
   function buildKits() {
     const pad = n => String(n).padStart(2, '0');
     const splats = ['#ff4d6d', '#ffd43b', '#4dabf7', '#51cf66', '#f06595', '#9775fa'];
@@ -96,7 +103,7 @@
               <strong>${money(p.price)}</strong>
               ${p.mrp && p.mrp > p.price ? `<s>${money(p.mrp)}</s><span class="save">Save ${save}%</span>` : ''}
             </div>
-            <ul class="kit__hl">${(p.highlights || []).map(h => `<li>${h}</li>`).join('')}</ul>
+            <ul class="kit__hl">${contents(p).map(h => `<li>${h}</li>`).join('')}</ul>
             <div class="kit__actions">
               <div class="qty">
                 <button type="button" data-q="-1" aria-label="Decrease">−</button>
